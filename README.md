@@ -17,12 +17,13 @@ After setting the //#dsn pragma, use Visual Mode to select the chunk of query te
 I may potentially add additional options using the same syntax in the future (or feel free to add your own!).
 
 ## Example
+See the example query buffer below:
 
-//#dsn mongodb://localhost/minerva
+	//#dsn mongodb://localhost/products
 
-db.widgets.find({
-	Name: /Widget/
-})
-.sort({
-	Cdate: -1
-})
+	db.widgets.find({
+		Name: /Widget/
+	})
+	.sort({
+		Cdate: -1
+	})
