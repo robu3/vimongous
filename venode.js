@@ -8,6 +8,7 @@ program
 	.version("0.0.1")
 	.option("-d, --dsn [dsn]", "The DSN of the Mongo database, e.g., mongodb://localhost/test")
 	.option("-q, --query [query]", "The query text to execute on the server")
+	.option("-l, --limit [limit]", "The maximum number of records returned; default is 50")
 	.option("--pretty", "Formats the text in the style of console.log()")
 	.option("--colors", "Adds color output when using --pretty")
 	.parse(process.argv);
@@ -31,5 +32,5 @@ venode.executeQuery(program.dsn, program.query, function (err, results) {
 		process.stdout.write(results);
 		process.exit();
 	}
-});
+}, { limit: program.limit });
 
