@@ -5,22 +5,23 @@ var mongodb = require("mongodb").MongoClient,
 	// used to determine if the query is returning a cursor or a concrete object
 	arrayRegex = /\.toArray\(\)$/,
 	countRegex = /\.count\(\)$/,
-	limitRegex = /\.limit\(\d*\)/;
+	limitRegex = /\.limit\(\d*\)/,
+	aggregateRegex = /\.aggregate\(.*\)/;
 
-//# Returns Cursor 
-//	Returns true if the specified query will return a cursor object
+// # Returns Cursor 
+// Returns true if the specified query will return a cursor object
 function returnsCursor(query) {
 	"use strict";
-	if (query.match(arrayRegex) || query.match(countRegex)) {
+	if (query.match(arrayRegex) || query.match(countRegex) || query.match(aggregateRegex)) {
 		return false;
 	}
 	return true;
 }
 
-//# Execute Query
-//	Executes the specified query on the specified server
-//  Callback takes (error, results)
-//  results may be a single object or array
+// # Execute Query
+// Executes the specified query on the specified server
+// Callback takes (error, results)
+// results may be a single object or array
 function executeQuery(dsn, queryText, cb, opts) {
 	"use strict";
 	opts = opts || {};
