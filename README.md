@@ -12,7 +12,7 @@ Vimongous is a Vim plugin for querying a MongoDB database from inside Vim. It re
 
 Vimongous relies on a C #pragma-like syntax for setting the DSN for queries run in the current buffer.
 
-After setting the //#dsn pragma, use Visual Mode to select the chunk of query text you want to run, and use <leader>mq (*Mo*ongo *Q*uery) to execute it.
+After setting the //#dsn pragma, use Visual Mode to select the chunk of query text you want to run, and use <leader>mq (_M_ongo _Q_uery) to execute it.
 
 I may potentially add additional options using the same syntax in the future (or feel free to add your own!).
 
