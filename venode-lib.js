@@ -54,7 +54,7 @@ function executeQuery(dsn, queryText, cb, opts) {
 
 function prettyPrint(results, doColors) {
 	"use strict";
-	return util.inspect(results, doColors);
+	return util.inspect(results, doColors, null);
 }
 
 exports.executeQuery = executeQuery;

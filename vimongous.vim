@@ -56,15 +56,22 @@ endfunction
 " http://learnvimscriptthehardway.stevelosh.com/chapters/52.html
 " the book is a great resource
 function! s:ShowResultsInSplit(text)
-	" name our new split to be clear to the user
-	split __vimongous_results__	
-	normal ggdG
+	let windowNum = bufwinnr("__vimongous_results__")
+	if windowNum > -1
+		execute(windowNum . "wincmd w")
+	else
+		" name our new split to be clear to the user
+		split __vimongous_results__	
+	endif
+
+	" set syntax & clear
 	setlocal filetype=javascript
 	setlocal buftype=nofile
+	normal! ggdG
 
 	" add results
 	call append(0, split(a:text, "\n"))
-	normal gg
+	normal! gg
 endfunction
 
 " gets the selected text in visual mode
